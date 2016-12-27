@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -20,9 +21,9 @@
     <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
     <!--[if lt IE 9]>
-	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
 <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -42,7 +43,7 @@
 <div class="container" style="padding-top: 48px;">
     <div class="bs-callout bs-callout-info mt0">
         <div class="alert alert-danger">
-            <p><h4>可对静态链接加速下载，一个典型的链接是 example.com/path/to/file/a.zip</h4></p>
+            <p><h4>可对静态链接加速下载，一个典型的链接是 http://example.com/path/to/file/a.zip</h4></p>
         </div>
     </div>
     <div class="row" style="margin:0;min-height:600px">
@@ -52,11 +53,10 @@
                 <input placeholder="//example.com/path/to/file/a.zip"
                        type="text" name="id" id="keyword" class="form-control">
                 <span class="input-group-btn scan-but-span">
-						<button class="btn btn-success" onclick="scan()" type="button">召唤萌妹</button>
+						<button class="btn btn-success" onclick="scan()" type="button">和萌妹打个招呼</button>
 					</span>
             </div>
             <br><br><br>
-            <input type="text" name="id" id="disabledInput" class="form-control" placeholder="加速链接">
         </div>
         <div class="well" style="padding-left: 8px 0; background-color: beige">
             <ul class="nav nav-list">
@@ -70,14 +70,21 @@
                     <a href=http://blog.fiht.me>Fiht's blog</a>
                 </li>
             </ul>
+            本网页源代码见 <a href="https://github.com/fiht/SDU_Speedup">https://github.com/fiht/SDU_Speedup</a>,加速链接由cj分享,希望有志同仁能够一起来美化这个页面.
 
         </div>
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261055670'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261055670%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cspan id='cnzz_stat_icon_1261055670'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261055670%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
     </div>
 
 </div>
 </div>
 <script>
+    var new_url;
+    function download() {
+        window.open(new_url);
+        alert(status);
+    }
     var selectorObj;
     function gt_custom_ajax(result, selector) {
         selectorObj = selector;
@@ -88,6 +95,7 @@
         keyword = $.trim($("#keyword").val());
         if (keyword == '') {
             $("#keyword").focus();
+            alert("请输入下载链接");
             return false;
         }
         else {
@@ -100,8 +108,10 @@
             else if (keyword.match('^ftp://')) {
                 keyword = keyword.replace('ftp://', '');
             }
-            keyword = "http://202.194.19.21/".concat(keyword);
-            $("#disabledInput").val(keyword)
+            var speedup_hosts = ["http://202.194.19.21/", "http://202.194.19.20/", "http://202.194.19.22/"];
+            new_url = speedup_hosts[Math.floor(Math.random() * speedup_hosts.length)].concat(keyword);
+            // UrlExists(new_url,download);
+            download();
         }
     }
 </script>
