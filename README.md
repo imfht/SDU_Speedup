@@ -28,7 +28,7 @@ http://202.194.19.20/blog-10075082.cos.myqcloud.com/blog/BurpSuite1_7_1.tar.gz
 ## 软件
 1. Windows 下可以使用CJ的下载工具
 
-[![点我下载](https://ohrhuwrbc.qnssl.com/16-12-13/32106656-file_1481638245625_e248.jpg)](http://blog-10075082.cos.myqcloud.com/blog/SDU_Speed.rar)
+[点我下载](http://blog-10075082.cos.myqcloud.com/blog/SDU_Speed.rar)
 2.其他客户端可以访问使用我的在线工具
 
-[![点我直达](https://ohrhuwrbc.qnssl.com/16-12-13/95788658-file_1481638267561_dde3.jpg)](http://cache.fiht.ml)
+[点我直达](http://cache.fiht.ml)
